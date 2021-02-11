@@ -865,6 +865,24 @@ MonoBehaviour:
     showGizmo: 1
   - color: {r: 0, g: 1, b: 0, a: 1}
     showGizmo: 1
+--- !u!1 &1191166231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3614301952805836621, guid: a96c70f97ff66f84fa569bca2f793d35, type: 3}
+  m_PrefabInstance: {fileID: 1126229601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1191166233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191166231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2708ffabdca53da4ea9a7dfffc96935e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 6
 --- !u!1 &1264229498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900329420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5898757, y: -3.83, z: -19.66315}
+  m_LocalPosition: {x: -2.5898757, y: -3.83, z: 0}
   m_LocalScale: {x: 132.7725, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
