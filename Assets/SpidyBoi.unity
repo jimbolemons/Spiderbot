@@ -356,7 +356,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1565907159}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.002, y: -0.001, z: -0.022}
+  m_LocalEulerAnglesHint: {x: -0.154, y: 0, z: 12.23}
 --- !u!1 &539551831
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +612,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1565907151}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0.002, y: 0.002, z: 0.112}
+  m_LocalEulerAnglesHint: {x: -0.321, y: 0, z: 18.785}
 --- !u!1 &824414303
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +919,11 @@ MonoBehaviour:
   speed: 6
   isLegs: 1
   isGun: 0
+  rLeg1: {fileID: 5629614}
+  rLeg2: {fileID: 1528373638}
+  lLeg1: {fileID: 1856962123}
+  lLeg2: {fileID: 1843092608}
+  obj: {fileID: 1536383961}
 --- !u!1 &1537685248
 GameObject:
   m_ObjectHideFlags: 0
