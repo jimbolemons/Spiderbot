@@ -14,6 +14,10 @@ public class movement : MonoBehaviour
      public bool isLegs = false;
      public bool isGun = false;
      public Transform rLeg1;
+     public Vector3 temp;
+     bool Legforward = false;
+
+     float times = 0;
 
 public Transform rLeg2;
 public Transform lLeg1;
@@ -49,17 +53,40 @@ if (isLegs)
              obj.transform.position += new Vector3(move,moveV,0);
 
 
+               if (Legforward)
+               {
+
+                    rLeg1.transform.position = Vector3.Lerp(rLeg1.transform.position, (rLeg1.transform.position += new Vector3(3,0,0)), times );
+                         
+                         times += Time.deltaTime;
+                         if(times >= 1){
+                         Legforward = false;
+                         times = 0;
+                         }
+                    
+
+               }
+
+
+
            if (rLeg1.transform.position.x <=obj.transform.position.x +5 && rLeg1.transform.position.x >=obj.transform.position.x +2 )
            {
+               
            }
            else if(obj.transform.position.x +5 >= rLeg1.transform.position.x )
            {
-                rLeg1.transform.position += new Vector3( 3,0,0);
+                rLeg1.transform.position += new Vector3( 3,0,0);               
+                //Legforward = true;
+                
+                //StartCoroutine(MoveLegs(rLeg1,3));
            } 
            else if(obj.transform.position.x +5 <= rLeg1.transform.position.x )
            {
                 rLeg1.transform.position += new Vector3( -3,0,0);
            }
+
+
+
 
            if (rLeg2.transform.position.x <=obj.transform.position.x +5 && rLeg2.transform.position.x >=obj.transform.position.x +2 )
            {
@@ -74,6 +101,8 @@ if (isLegs)
            }
 
 
+
+
            if (lLeg1.transform.position.x >=obj.transform.position.x -5 && lLeg1.transform.position.x <=obj.transform.position.x -2 )
            {
            }
@@ -85,6 +114,9 @@ if (isLegs)
            {
                 lLeg1.transform.position += new Vector3( -3,0,0);
            }
+
+
+
 
            if (lLeg2.transform.position.x >=obj.transform.position.x -5 && lLeg2.transform.position.x <=obj.transform.position.x -2 )
            {
@@ -144,6 +176,28 @@ this.transform.rotation = Quaternion.Slerp(transform.rotation, target,  Time.del
 
          
         
+     }
+     public void MoveLeg(Transform leg, Vector3 start, Vector3 end)
+     {
+
+                leg.transform.position = Vector3.Lerp(start, end, 5 *Time.deltaTime);
+     }
+
+     IEnumerator MoveLegs(Transform leg, float move)
+     {
+          Vector3 start = leg.transform.position;
+          Vector3 end = leg.transform.position + new Vector3( move,0,0);
+
+          while(transform.transform.position.x - end.x >= -.1f || transform.transform.position.x - end.x <= .1f  )
+          {
+               leg.transform.position = Vector3.MoveTowards(start,end,1);
+               //leg.transform.position = Vector3.Lerp(start, end, 5 *Time.deltaTime);
+
+               yield return null;
+          }
+          yield return null;
+
+
      }
  }
  
