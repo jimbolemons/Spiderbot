@@ -19,6 +19,12 @@ public class movement : MonoBehaviour
 
      float times = 0;
 
+     public Transform FRTarget;
+     public Transform FLTarget;
+     public Transform BRTarget;
+     public Transform BLTarget;
+
+
 public Transform rLeg2;
 public Transform lLeg1;
 public Transform lLeg2;
@@ -69,70 +75,71 @@ if (isLegs)
 
 
 
-           if (rLeg1.transform.position.x <=obj.transform.position.x +5 && rLeg1.transform.position.x >=obj.transform.position.x +2 )
+           if (FRTarget.transform.position.x <=obj.transform.position.x +5 && FRTarget.transform.position.x >=obj.transform.position.x +2 )
            {
                
            }
-           else if(obj.transform.position.x +5 >= rLeg1.transform.position.x )
+           else if(obj.transform.position.x +5 >= FRTarget.transform.position.x )
            {
-                rLeg1.transform.position += new Vector3( 3,0,0);               
-                //Legforward = true;
-                
-                //StartCoroutine(MoveLegs(rLeg1,3));
+                FRTarget.transform.position += new Vector3( 3,0,0);               
+               
            } 
-           else if(obj.transform.position.x +5 <= rLeg1.transform.position.x )
+           else if(obj.transform.position.x +5 <= FRTarget.transform.position.x )
            {
-                rLeg1.transform.position += new Vector3( -3,0,0);
+                FRTarget.transform.position += new Vector3( -3,0,0);
            }
 
 
 
 
-           if (rLeg2.transform.position.x <=obj.transform.position.x +5 && rLeg2.transform.position.x >=obj.transform.position.x +2 )
+           if (BRTarget.transform.position.x <=obj.transform.position.x +5 && BRTarget.transform.position.x >=obj.transform.position.x +2 )
            {
            }
-           else if(obj.transform.position.x +5 >= rLeg2.transform.position.x )
+           else if(obj.transform.position.x +5 >= BRTarget.transform.position.x )
            {
-                rLeg2.transform.position += new Vector3( 3,0,0);
+                BRTarget.transform.position += new Vector3( 3,0,0);
            } 
-           else if(obj.transform.position.x +5 <= rLeg2.transform.position.x )
+           else if(obj.transform.position.x +5 <= BRTarget.transform.position.x )
            {
-                rLeg2.transform.position += new Vector3( -3,0,0);
+                BRTarget.transform.position += new Vector3( -3,0,0);
            }
 
 
 
 
-           if (lLeg1.transform.position.x >=obj.transform.position.x -5 && lLeg1.transform.position.x <=obj.transform.position.x -2 )
+           if (FLTarget.transform.position.x >=obj.transform.position.x -5 && FLTarget.transform.position.x <=obj.transform.position.x -2 )
            {
            }
-           else if(obj.transform.position.x -5 >= lLeg1.transform.position.x )
+           else if(obj.transform.position.x -5 >= FLTarget.transform.position.x )
            {
-                lLeg1.transform.position += new Vector3( 3,0,0);
+                FLTarget.transform.position += new Vector3( 3,0,0);
            } 
-           else if(obj.transform.position.x -5 <= lLeg1.transform.position.x )
+           else if(obj.transform.position.x -5 <= FLTarget.transform.position.x )
            {
-                lLeg1.transform.position += new Vector3( -3,0,0);
+                FLTarget.transform.position += new Vector3( -3,0,0);
            }
 
 
 
 
-           if (lLeg2.transform.position.x >=obj.transform.position.x -5 && lLeg2.transform.position.x <=obj.transform.position.x -2 )
+           if (BLTarget.transform.position.x >=obj.transform.position.x -5 && BLTarget.transform.position.x <=obj.transform.position.x -2 )
            {
            }
-           else if(obj.transform.position.x -5 >= lLeg2.transform.position.x )
+           else if(obj.transform.position.x -5 >= BLTarget.transform.position.x )
            {
-                lLeg2.transform.position += new Vector3( 3,0,0);
+                BLTarget.transform.position += new Vector3( 3,0,0);
            } 
-           else if(obj.transform.position.x -5 <= lLeg2.transform.position.x )
+           else if(obj.transform.position.x -5 <= BLTarget.transform.position.x )
            {
-                lLeg2.transform.position += new Vector3( -3,0,0);
+                BLTarget.transform.position += new Vector3( -3,0,0);
            }
 
 
-
-
+          
+          rLeg1.transform.position = Vector3.MoveTowards(rLeg1.transform.position,FRTarget.transform.position, 20 * Time.deltaTime);    
+          rLeg2.transform.position = Vector3.MoveTowards(rLeg2.transform.position,BRTarget.transform.position, 20 * Time.deltaTime);  
+          lLeg1.transform.position = Vector3.MoveTowards(lLeg1.transform.position,FLTarget.transform.position, 20 * Time.deltaTime);  
+          lLeg2.transform.position = Vector3.MoveTowards(lLeg2.transform.position,BLTarget.transform.position, 20 * Time.deltaTime);  
 
 
 
