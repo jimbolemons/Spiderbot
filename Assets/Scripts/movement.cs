@@ -40,23 +40,26 @@ void Update() {
 if (isLegs)
 {
             move = Input.GetAxis("Horizontal");
-            move = move / 20f;    
+            move =  move * (7*Time.deltaTime);    
                     
             moveV = Input.GetAxis("Vertical");
-            moveV = moveV / 20f;
+            moveV = moveV *  (7*Time.deltaTime);
 
             if (obj.transform.position.y <= -2.5) 
             {
-               moveV += 20* Time.deltaTime;
+               moveV += 7* Time.deltaTime;
+               //moveV = -moveV;
+
             }
             
              if (obj.transform.position.y >= .116) 
              {
-                  moveV -= 20* Time.deltaTime ;
+                  moveV -= 7* Time.deltaTime ;
+                 // moveV = -moveV;
              }
              Debug.Log(obj.transform.position.y);
 
-             obj.transform.position += new Vector3(move,moveV,0);
+             obj.transform.position += new Vector3(move ,moveV,0);
 
 
                if (Legforward)
@@ -136,10 +139,10 @@ if (isLegs)
 
 
           
-          rLeg1.transform.position = Vector3.MoveTowards(rLeg1.transform.position,FRTarget.transform.position, 20 * Time.deltaTime);    
-          rLeg2.transform.position = Vector3.MoveTowards(rLeg2.transform.position,BRTarget.transform.position, 20 * Time.deltaTime);  
-          lLeg1.transform.position = Vector3.MoveTowards(lLeg1.transform.position,FLTarget.transform.position, 20 * Time.deltaTime);  
-          lLeg2.transform.position = Vector3.MoveTowards(lLeg2.transform.position,BLTarget.transform.position, 20 * Time.deltaTime);  
+          rLeg1.transform.position = Vector3.MoveTowards(rLeg1.transform.position,FRTarget.transform.position, 30 * Time.deltaTime);    
+          rLeg2.transform.position = Vector3.MoveTowards(rLeg2.transform.position,BRTarget.transform.position, 30 * Time.deltaTime);  
+          lLeg1.transform.position = Vector3.MoveTowards(lLeg1.transform.position,FLTarget.transform.position, 30 * Time.deltaTime);  
+          lLeg2.transform.position = Vector3.MoveTowards(lLeg2.transform.position,BLTarget.transform.position, 30 * Time.deltaTime);  
 
 
 
