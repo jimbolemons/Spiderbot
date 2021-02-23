@@ -30,6 +30,9 @@ public Transform lLeg1;
 public Transform lLeg2;
 public Transform obj;
 
+public float speed2 = 1.0f; //how fast it shakes
+public float amount = 1.0f; //how much it shakes
+
  
  
 void Update() {
@@ -39,6 +42,10 @@ void Update() {
              
 if (isLegs)
 {
+          float x =  Mathf.Sin(Time.time * speed2) * (amount * Time.deltaTime);
+          obj.transform.position += new Vector3(0,x,0);
+
+          
             move = Input.GetAxis("Horizontal");
             move =  move * (7*Time.deltaTime);    
                     
@@ -76,7 +83,7 @@ if (isLegs)
 
                }
 
-
+if( Input.GetAxis("Horizontal") >.1 || Input.GetAxis("Horizontal") < -.1){
 
            if (FRTarget.transform.position.x <=obj.transform.position.x +5 && FRTarget.transform.position.x >=obj.transform.position.x +2 )
            {
@@ -136,6 +143,7 @@ if (isLegs)
            {
                 BLTarget.transform.position += new Vector3( -3,0,0);
            }
+}
 
 
           
