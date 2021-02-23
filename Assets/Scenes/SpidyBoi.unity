@@ -993,6 +993,8 @@ MonoBehaviour:
   lLeg1: {fileID: 1856962123}
   lLeg2: {fileID: 1843092608}
   obj: {fileID: 1536383961}
+  speed2: 6
+  amount: 0.5
 --- !u!1 &1537685248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,6 +1981,8 @@ MonoBehaviour:
   lLeg1: {fileID: 0}
   lLeg2: {fileID: 0}
   obj: {fileID: 0}
+  speed2: 1
+  amount: 1
 --- !u!1 &1663890182
 GameObject:
   m_ObjectHideFlags: 0
