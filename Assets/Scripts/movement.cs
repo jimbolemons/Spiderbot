@@ -14,11 +14,24 @@ public class movement : MonoBehaviour
      public bool isLegs = false;
      public bool isGun = false;
      public Transform rLeg1;
+     public Vector3 temp;
+     bool Legforward = false;
+
+     float times = 0;
+
+     public Transform FRTarget;
+     public Transform FLTarget;
+     public Transform BRTarget;
+     public Transform BLTarget;
+
 
 public Transform rLeg2;
 public Transform lLeg1;
 public Transform lLeg2;
 public Transform obj;
+
+public float speed2 = 1.0f; //how fast it shakes
+public float amount = 1.0f; //how much it shakes
 
  
  
@@ -29,78 +42,115 @@ void Update() {
              
 if (isLegs)
 {
+          float x =  Mathf.Sin(Time.time * speed2) * (amount * Time.deltaTime);
+          obj.transform.position += new Vector3(0,x,0);
+
+          
             move = Input.GetAxis("Horizontal");
-            move = move / 20f;    
+            move =  move * (7*Time.deltaTime);    
                     
             moveV = Input.GetAxis("Vertical");
-            moveV = moveV / 20f;
+            moveV = moveV *  (7*Time.deltaTime);
 
             if (obj.transform.position.y <= -2.5) 
             {
-               moveV += 20* Time.deltaTime;
+               moveV += 7* Time.deltaTime;
+               //moveV = -moveV;
+
             }
             
              if (obj.transform.position.y >= .116) 
              {
-                  moveV -= 20* Time.deltaTime ;
+                  moveV -= 7* Time.deltaTime ;
+                 // moveV = -moveV;
              }
              Debug.Log(obj.transform.position.y);
 
-             obj.transform.position += new Vector3(move,moveV,0);
+             obj.transform.position += new Vector3(move ,moveV,0);
 
 
-           if (rLeg1.transform.position.x <=obj.transform.position.x +5 && rLeg1.transform.position.x >=obj.transform.position.x +2 )
+               if (Legforward)
+               {
+
+                    rLeg1.transform.position = Vector3.Lerp(rLeg1.transform.position, (rLeg1.transform.position += new Vector3(3,0,0)), times );
+                         
+                         times += Time.deltaTime;
+                         if(times >= 1){
+                         Legforward = false;
+                         times = 0;
+                         }
+                    
+
+               }
+
+if( Input.GetAxis("Horizontal") >.1 || Input.GetAxis("Horizontal") < -.1){
+
+           if (FRTarget.transform.position.x <=obj.transform.position.x +5 && FRTarget.transform.position.x >=obj.transform.position.x +2 )
            {
+               
            }
-           else if(obj.transform.position.x +5 >= rLeg1.transform.position.x )
+           else if(obj.transform.position.x +5 >= FRTarget.transform.position.x )
            {
-                rLeg1.transform.position += new Vector3( 3,0,0);
+                FRTarget.transform.position += new Vector3( 3,0,0);               
+               
            } 
-           else if(obj.transform.position.x +5 <= rLeg1.transform.position.x )
+           else if(obj.transform.position.x +5 <= FRTarget.transform.position.x )
            {
-                rLeg1.transform.position += new Vector3( -3,0,0);
+                FRTarget.transform.position += new Vector3( -3,0,0);
            }
 
-           if (rLeg2.transform.position.x <=obj.transform.position.x +5 && rLeg2.transform.position.x >=obj.transform.position.x +2 )
+
+
+
+           if (BRTarget.transform.position.x <=obj.transform.position.x +5 && BRTarget.transform.position.x >=obj.transform.position.x +2 )
            {
            }
-           else if(obj.transform.position.x +5 >= rLeg2.transform.position.x )
+           else if(obj.transform.position.x +5 >= BRTarget.transform.position.x )
            {
-                rLeg2.transform.position += new Vector3( 3,0,0);
+                BRTarget.transform.position += new Vector3( 3,0,0);
            } 
-           else if(obj.transform.position.x +5 <= rLeg2.transform.position.x )
+           else if(obj.transform.position.x +5 <= BRTarget.transform.position.x )
            {
-                rLeg2.transform.position += new Vector3( -3,0,0);
+                BRTarget.transform.position += new Vector3( -3,0,0);
            }
 
 
-           if (lLeg1.transform.position.x >=obj.transform.position.x -5 && lLeg1.transform.position.x <=obj.transform.position.x -2 )
+
+
+           if (FLTarget.transform.position.x >=obj.transform.position.x -5 && FLTarget.transform.position.x <=obj.transform.position.x -2 )
            {
            }
-           else if(obj.transform.position.x -5 >= lLeg1.transform.position.x )
+           else if(obj.transform.position.x -5 >= FLTarget.transform.position.x )
            {
-                lLeg1.transform.position += new Vector3( 3,0,0);
+                FLTarget.transform.position += new Vector3( 3,0,0);
            } 
-           else if(obj.transform.position.x -5 <= lLeg1.transform.position.x )
+           else if(obj.transform.position.x -5 <= FLTarget.transform.position.x )
            {
-                lLeg1.transform.position += new Vector3( -3,0,0);
+                FLTarget.transform.position += new Vector3( -3,0,0);
            }
 
-           if (lLeg2.transform.position.x >=obj.transform.position.x -5 && lLeg2.transform.position.x <=obj.transform.position.x -2 )
+
+
+
+           if (BLTarget.transform.position.x >=obj.transform.position.x -5 && BLTarget.transform.position.x <=obj.transform.position.x -2 )
            {
            }
-           else if(obj.transform.position.x -5 >= lLeg2.transform.position.x )
+           else if(obj.transform.position.x -5 >= BLTarget.transform.position.x )
            {
-                lLeg2.transform.position += new Vector3( 3,0,0);
+                BLTarget.transform.position += new Vector3( 3,0,0);
            } 
-           else if(obj.transform.position.x -5 <= lLeg2.transform.position.x )
+           else if(obj.transform.position.x -5 <= BLTarget.transform.position.x )
            {
-                lLeg2.transform.position += new Vector3( -3,0,0);
+                BLTarget.transform.position += new Vector3( -3,0,0);
            }
+}
 
 
-
-
+          
+          rLeg1.transform.position = Vector3.MoveTowards(rLeg1.transform.position,FRTarget.transform.position, 30 * Time.deltaTime);    
+          rLeg2.transform.position = Vector3.MoveTowards(rLeg2.transform.position,BRTarget.transform.position, 30 * Time.deltaTime);  
+          lLeg1.transform.position = Vector3.MoveTowards(lLeg1.transform.position,FLTarget.transform.position, 30 * Time.deltaTime);  
+          lLeg2.transform.position = Vector3.MoveTowards(lLeg2.transform.position,BLTarget.transform.position, 30 * Time.deltaTime);  
 
 
 
@@ -144,6 +194,28 @@ this.transform.rotation = Quaternion.Slerp(transform.rotation, target,  Time.del
 
          
         
+     }
+     public void MoveLeg(Transform leg, Vector3 start, Vector3 end)
+     {
+
+                leg.transform.position = Vector3.Lerp(start, end, 5 *Time.deltaTime);
+     }
+
+     IEnumerator MoveLegs(Transform leg, float move)
+     {
+          Vector3 start = leg.transform.position;
+          Vector3 end = leg.transform.position + new Vector3( move,0,0);
+
+          while(transform.transform.position.x - end.x >= -.1f || transform.transform.position.x - end.x <= .1f  )
+          {
+               leg.transform.position = Vector3.MoveTowards(start,end,1);
+               //leg.transform.position = Vector3.Lerp(start, end, 5 *Time.deltaTime);
+
+               yield return null;
+          }
+          yield return null;
+
+
      }
  }
  
