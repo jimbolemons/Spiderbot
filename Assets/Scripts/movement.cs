@@ -32,7 +32,10 @@ public Transform obj;
 
 public float speed2 = 1.0f; //how fast it shakes
 public float amount = 1.0f; //how much it shakes
-
+float tiltAroundZ;
+float storage;
+bool firstgo = true;
+bool barelRot = true;
  
  
 void Update() {
@@ -52,19 +55,22 @@ if (isLegs)
             moveV = Input.GetAxis("Vertical");
             moveV = moveV *  (7*Time.deltaTime);
 
+            
+
             if (obj.transform.position.y <= -2.5) 
             {
                moveV += 7* Time.deltaTime;
                //moveV = -moveV;
-
+               
             }
             
              if (obj.transform.position.y >= .116) 
              {
                   moveV -= 7* Time.deltaTime ;
                  // moveV = -moveV;
-             }
-             Debug.Log(obj.transform.position.y);
+                 
+             }       
+             //Debug.Log(obj.transform.position.y);
 
              obj.transform.position += new Vector3(move ,moveV,0);
 
@@ -181,15 +187,45 @@ if( Input.GetAxis("Horizontal") >.1 || Input.GetAxis("Horizontal") < -.1){
              //-60 to -120 degreees
 if(isGun)
 {
+
+
     float smooth = 5.0f;
     float tiltAngle = 10.0f;
+  
 
-    float tiltAroundZ = Input.GetAxis("Vertical") * tiltAngle;
+    // tiltAroundZ += Input.GetAxis("Vertical") * tiltAngle;
     //tiltAroundZ = Input.GetAxis("Horizontal") * tiltAngle;
 
- Quaternion target = Quaternion.Euler(0, 0, -tiltAroundZ);
+ 
+          if(Input.GetAxis("Vertical") >.01f || Input.GetAxis("Vertical") < -.01f)
+          {
+               if(firstgo)
+               {
+                    storage = tiltAroundZ;
+                    firstgo = false;
+               }
+              
+                
+               tiltAroundZ = storage + Input.GetAxis("Vertical") * tiltAngle;
+
+          }else{
+               storage = tiltAroundZ;
+
+          }
+
+           if(Input.GetKey("q")&& tiltAroundZ !> -26)
+            {
+                tiltAroundZ += -.02f * tiltAngle;
+            }
+            if(Input.GetKey("e") && tiltAroundZ !< 30)
+            {
+                tiltAroundZ += .02f * tiltAngle;
+            }
+
+            Quaternion target = Quaternion.Euler(0, 0, -tiltAroundZ);
 
 this.transform.rotation = Quaternion.Slerp(transform.rotation, target,  Time.deltaTime * smooth);
+     Debug.Log(tiltAroundZ);
 }
 
          
