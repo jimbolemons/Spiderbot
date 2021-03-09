@@ -45,12 +45,28 @@ void Update() {
              
 if (isLegs)
 {
+
+     //x = 50 max
+     //x = -80 min
           float x =  Mathf.Sin(Time.time * speed2) * (amount * Time.deltaTime);
           obj.transform.position += new Vector3(0,x,0);
 
           
             move = Input.GetAxis("Horizontal");
-            move =  move * (7*Time.deltaTime);    
+            if(this.transform.position.x < -80)
+            {
+                 move =  1 * (7 * Time.deltaTime); 
+                 
+            } 
+            else if(this.transform.position.x > 50)
+            {
+            move =  -1 * (7 * Time.deltaTime);
+            }
+            else
+            {
+                 move =  move * (7 * Time.deltaTime);
+            }
+            
                     
             moveV = Input.GetAxis("Vertical");
             moveV = moveV *  (7*Time.deltaTime);
