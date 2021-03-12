@@ -51,6 +51,8 @@ public bool GunMouse2;
 float Angle;
 public float maxA;
 public float minA;
+
+float store;
  
  
 void Update() {
@@ -232,10 +234,30 @@ Vector2 dir = new Vector2(
 
 transform.right = dir;
 
-Angle = Mathf.RoundToInt(Mathf.Atan2(mousePositiion.y, mousePositiion.x) * Mathf.Rad2Deg);
+
+
+//store = Mathf.Clamp(transform.right.y, -.5f, .5f);
+
+if (transform.right.y >= .5f)
+{
+     transform.right = new Vector3(dir.x,.5f,0);
+}
+if (transform.right.y <= -.5f)
+{
+     transform.right = new Vector3(dir.x,-.5f,0);
+}
+Debug.Log(transform.right);
+
+
+//transform.right = new Vector3(transform.right.x,store,0);
+
+
+//Angle = Mathf.RoundToInt(Mathf.Atan2(mousePositiion.y, mousePositiion.x) * Mathf.Rad2Deg);
 //Angle = this.transform.rotation.z * Mathf.Rad2Deg;
-Angle = Mathf.Clamp(Angle, minA, maxA); 
-transform.localRotation = Quaternion.Euler(0f, 0f, Angle);
+
+
+//Angle = Mathf.Clamp(Angle, minA, maxA); 
+//transform.localRotation = Quaternion.Euler(0f, 0f, Angle);
 
 }
 if(GunMouse2)
@@ -243,8 +265,8 @@ if(GunMouse2)
       pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
  
              dir = pos - transform.position;
-             dir = dir.Normalize();
-             transform.right = dir.Normalize();
+             //dir = dir.Normalize();
+            // transform.right = dir.Normalize();
  
              //if (player.localScale.x == -1)
              //{
