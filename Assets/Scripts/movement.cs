@@ -36,6 +36,21 @@ float tiltAroundZ;
 float storage;
 bool firstgo = true;
 bool barelRot = true;
+public bool GunMouse;
+public bool GunMouse2;
+ public Vector3 pos;
+         public Vector2 dir;
+         public Transform player;
+ 
+         public int maxAngle;
+         public int minAngle;
+ 
+         public int angle;
+ 
+
+float Angle;
+public float maxA;
+public float minA;
  
  
 void Update() {
@@ -200,7 +215,46 @@ if( Input.GetAxis("Horizontal") >.1 || Input.GetAxis("Horizontal") < -.1){
           // }
 
 }
+
+
              //-60 to -120 degreees
+
+if (GunMouse)
+{
+Vector3 mousePositiion = Input.mousePosition;
+mousePositiion = Camera.main.ScreenToWorldPoint(mousePositiion);
+
+Vector2 dir = new Vector2(
+
+     mousePositiion.x - transform.position.x,
+     mousePositiion.y - transform.position.y
+);
+
+transform.right = dir;
+
+Angle = Mathf.RoundToInt(Mathf.Atan2(mousePositiion.y, mousePositiion.x) * Mathf.Rad2Deg);
+//Angle = this.transform.rotation.z * Mathf.Rad2Deg;
+Angle = Mathf.Clamp(Angle, minA, maxA); 
+transform.localRotation = Quaternion.Euler(0f, 0f, Angle);
+
+}
+if(GunMouse2)
+{
+      pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+ 
+             dir = pos - transform.position;
+             dir = dir.Normalize();
+             transform.right = dir.Normalize();
+ 
+             //if (player.localScale.x == -1)
+             //{
+             //    dir.x *= -1;
+             //}
+ 
+             angle = Mathf.RoundToInt(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+             angle = Mathf.Clamp(angle, minAngle, maxAngle);
+             transform.localRotation = Quaternion.Euler(0f, 0f, angle);
+}
 if(isGun)
 {
 

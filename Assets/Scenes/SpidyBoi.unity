@@ -6684,6 +6684,16 @@ MonoBehaviour:
   obj: {fileID: 1536383961}
   speed2: 6
   amount: 0.5
+  GunMouse: 0
+  GunMouse2: 0
+  pos: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0}
+  player: {fileID: 0}
+  maxAngle: 0
+  minAngle: 0
+  angle: 0
+  maxA: 0
+  minA: 0
 --- !u!1 &1537685248
 GameObject:
   m_ObjectHideFlags: 0
@@ -8039,7 +8049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   isLegs: 0
-  isGun: 1
+  isGun: 0
   rLeg1: {fileID: 0}
   temp: {x: 0, y: 0, z: 0}
   FRTarget: {fileID: 0}
@@ -8052,6 +8062,16 @@ MonoBehaviour:
   obj: {fileID: 0}
   speed2: 1
   amount: 1
+  GunMouse: 0
+  GunMouse2: 1
+  pos: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0}
+  player: {fileID: 0}
+  maxAngle: 120
+  minAngle: 60
+  angle: 0
+  maxA: 360
+  minA: 0
 --- !u!1 &1628092096
 GameObject:
   m_ObjectHideFlags: 0
