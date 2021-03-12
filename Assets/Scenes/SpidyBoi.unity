@@ -8062,8 +8062,8 @@ MonoBehaviour:
   obj: {fileID: 0}
   speed2: 1
   amount: 1
-  GunMouse: 0
-  GunMouse2: 1
+  GunMouse: 1
+  GunMouse2: 0
   pos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0}
   player: {fileID: 0}
