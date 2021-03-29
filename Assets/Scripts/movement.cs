@@ -53,7 +53,13 @@ public float maxA;
 public float minA;
 
 float store;
+ void start()
+ {
+      
+     player = transform.parent;
  
+     Angle = 0;
+ }
  
 void Update() {
         
@@ -238,14 +244,14 @@ transform.right = dir;
 
 //store = Mathf.Clamp(transform.right.y, -.5f, .5f);
 
-if (transform.right.y >= .5f)
-{
-     transform.right = new Vector3(dir.x,.5f,0);
-}
-if (transform.right.y <= -.5f)
-{
-     transform.right = new Vector3(dir.x,-.5f,0);
-}
+//if (transform.right.y >= .5f)
+//{
+ //    transform.right = new Vector3(dir.x,.5f,0);
+//}
+//if (transform.right.y <= -.5f)
+//{/
+   //  transform.right = new Vector3(dir.x,-.5f,0);
+//}
 Debug.Log(transform.right);
 
 
@@ -262,20 +268,19 @@ Debug.Log(transform.right);
 }
 if(GunMouse2)
 {
-      pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
  
              dir = pos - transform.position;
-             //dir = dir.Normalize();
-            // transform.right = dir.Normalize();
+             dir.Normalize();
  
-             //if (player.localScale.x == -1)
+            // if (player.localScale.x == -1)
              //{
-             //    dir.x *= -1;
-             //}
+            //     dir.x *= -1;
+            // }
  
              angle = Mathf.RoundToInt(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
              angle = Mathf.Clamp(angle, minAngle, maxAngle);
-             transform.localRotation = Quaternion.Euler(0f, 0f, angle);
+             transform.localRotation = Quaternion.Euler(0f, 0f, angle +270 );
 }
 if(isGun)
 {

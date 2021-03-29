@@ -6689,8 +6689,8 @@ MonoBehaviour:
   pos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0}
   player: {fileID: 0}
-  maxAngle: 0
-  minAngle: 0
+  maxAngle: -60
+  minAngle: -120
   angle: 0
   maxA: 0
   minA: 0
@@ -8035,6 +8035,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -7916790964561165690, guid: a96c70f97ff66f84fa569bca2f793d35, type: 3}
   m_PrefabInstance: {fileID: 1565907142}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1570736492 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5802345206664628063, guid: a96c70f97ff66f84fa569bca2f793d35, type: 3}
+  m_PrefabInstance: {fileID: 1565907142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1570736493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8062,13 +8067,13 @@ MonoBehaviour:
   obj: {fileID: 0}
   speed2: 1
   amount: 1
-  GunMouse: 1
-  GunMouse2: 0
+  GunMouse: 0
+  GunMouse2: 1
   pos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0}
-  player: {fileID: 0}
-  maxAngle: 120
-  minAngle: 60
+  player: {fileID: 1570736492}
+  maxAngle: 40
+  minAngle: -30
   angle: 0
   maxA: 360
   minA: 0
