@@ -13004,6 +13004,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -7916790964561165690, guid: a96c70f97ff66f84fa569bca2f793d35, type: 3}
   m_PrefabInstance: {fileID: 1565907142}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1570736492 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5802345206664628063, guid: a96c70f97ff66f84fa569bca2f793d35, type: 3}
+  m_PrefabInstance: {fileID: 1565907142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1570736493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13018,7 +13023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   isLegs: 0
-  isGun: 1
+  isGun: 0
   rLeg1: {fileID: 0}
   temp: {x: 0, y: 0, z: 0}
   FRTarget: {fileID: 0}
