@@ -51,6 +51,8 @@ public bool GunMouse2;
 float Angle;
 public float maxA;
 public float minA;
+public GameObject pew;
+public Transform barrel;
 
 float store;
  void start()
@@ -281,7 +283,18 @@ if(GunMouse2)
              angle = Mathf.RoundToInt(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
              angle = Mathf.Clamp(angle, minAngle, maxAngle);
              transform.localRotation = Quaternion.Euler(0f, 0f, angle +270 );
+
+
+             if (Input.GetMouseButtonDown(0)){
+               Debug.Log("pew");
+               Bullet();
+
+
+             }
+           
 }
+
+
 if(isGun)
 {
 
@@ -350,5 +363,11 @@ this.transform.rotation = Quaternion.Slerp(transform.rotation, target,  Time.del
 
 
      }
+     public void Bullet()
+     {
+         Instantiate(pew, barrel.position,barrel.rotation);
+     }
+
+     
  }
  
