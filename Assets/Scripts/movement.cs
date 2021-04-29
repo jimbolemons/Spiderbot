@@ -53,6 +53,7 @@ public float maxA;
 public float minA;
 public GameObject pew;
 public Transform barrel;
+public GameObject recoil;
 
 float store;
  void start()
@@ -285,12 +286,21 @@ if(GunMouse2)
              transform.localRotation = Quaternion.Euler(0f, 0f, angle +270 );
 
 
+             if(recoil.transform.localPosition.x < 1.117768f)
+               {
+             recoil.transform.localPosition += new Vector3(1* Time.deltaTime,0,0);
+               }
+               else
+               {
+                    
              if (Input.GetMouseButtonDown(0)){
                Debug.Log("pew");
+               recoil.transform.localPosition += new Vector3(-1,0,0);
                Bullet();
 
 
              }
+               }
            
 }
 
