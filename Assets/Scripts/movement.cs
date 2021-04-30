@@ -54,6 +54,7 @@ public float minA;
 public GameObject pew;
 public Transform barrel;
 public GameObject recoil;
+public ParticleSystem blast;
 
 float store;
  void start()
@@ -294,9 +295,10 @@ if(GunMouse2)
                {
                     
              if (Input.GetMouseButtonDown(0)){
-               Debug.Log("pew");
-               recoil.transform.localPosition += new Vector3(-1,0,0);
+               //Debug.Log("pew");
+               recoil.transform.localPosition += new Vector3(-.25f,0,0);
                Bullet();
+               blast.Play();
 
 
              }
