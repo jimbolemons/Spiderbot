@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 150
   timer: 0
+  shellExplotion: {fileID: 0}
+  renderers: {fileID: 5306484866729443829}
 --- !u!58 &4075180829506446331
 CircleCollider2D:
   m_ObjectHideFlags: 0

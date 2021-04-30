@@ -9,6 +9,9 @@ public class bullets : MonoBehaviour
      Rigidbody2D m_Rigidbody;
 
      public float timer;
+     private bool hit = false;
+     public ParticleSystem shellExplotion;
+     public SpriteRenderer renderers;
     void Start()
     {
          m_Rigidbody = GetComponent<Rigidbody2D>();
@@ -19,8 +22,9 @@ public class bullets : MonoBehaviour
     {
         //transform.Translate((transform.right * speed * Time.deltaTime));
        //m_Rigidbody.AddForce(transform.right * speed);
-        
+        if(!hit)
         transform.localPosition += transform.right * speed * Time.deltaTime;
+
         timer += Time.deltaTime;
         if (timer > 1)
         {
@@ -30,6 +34,9 @@ public class bullets : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("i hit something bra");
-         Destroy(this.gameObject);
+        hit = true;
+        shellExplotion.Play();
+        renderers.enabled = false;
+         Destroy(this.gameObject,5);
     }
 }
