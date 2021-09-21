@@ -38,8 +38,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Black
+    uniqueID: 1275554115
+    locked: 0
   - name: BackSky
     uniqueID: 2458660959
+    locked: 0
+  - name: Background-5
+    uniqueID: 3095021471
     locked: 0
   - name: backGround-4
     uniqueID: 3795783679

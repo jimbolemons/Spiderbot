@@ -17447,4 +17447,4 @@ ScriptedImporter:
   spriteLibAssetName: laser-Turet-BackUp-Backup Sprite Lib
   secondarySpriteTextures:
   - name: _NormalMap
-    texture: {fileID: -7237142467949573430, guid: e782ccfb1871bd741818529a49b50460, type: 3}
+    texture: {fileID: -7675827046756437717, guid: 2e8722f8b5786314faee3feb0b938abf, type: 3}
